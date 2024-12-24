@@ -17,7 +17,6 @@ namespace ConsoleProject
 
             backgroundManager backgroundmanager = new backgroundManager();
             backgroundmanager.Title();
-            backgroundmanager.Textbox();
         }
     }
 }
