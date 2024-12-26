@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject
 {
-     class backgroundManager
+    class backgroundManager
     {
         const int width = 80;
         const int height = 15;
@@ -24,7 +24,7 @@ namespace ConsoleProject
                 }
             }
         }
-      
+
         public void Textbox()
         {
             SetBoard();
@@ -33,13 +33,13 @@ namespace ConsoleProject
             for (int i = 0; i < width; i++)
             {
                 background[0, i] = '■'; //가로줄
-                background[height-1, i] = '■';
+                background[height - 1, i] = '■';
             }
 
             for (int i = 0; i < height; i++)
             {
                 background[i, 0] = '■'; //세로줄
-                background[i, width-1] = '■';
+                background[i, width - 1] = '■';
             }
 
             for (int i = 0; i < height; i++)
@@ -50,43 +50,10 @@ namespace ConsoleProject
                 }
                 Console.WriteLine();
             }
-            Console.SetCursorPosition(5,31);
+            Console.SetCursorPosition(5, 31);
         }
 
-        public void Title()
-        {
-            bool isExit = true;
-            char cursor = '▶';
-            #region
-            string Titielogo = "                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                ...                                                                                                                             \r\n                              :#@@@@%%=.          ..-+%%*              ..-#%=                                                                                   \r\n                            .*@@@@@@@@@@@=.     :@@@@@@@:           .+@@@@@@=                                                                                   \r\n                           :@@@@@@@@@@@@@@@-    -@@@@@@#.           .+@@@@@@-                                                                                   \r\n                          -%@%. .:#@@@@@@@@%:   =@@@@@@*.           .+@@@@@@-                                                                                   \r\n                         .%@@+      .=%@@@@%:   +@@@@@@=.           .+@@@@@@-                                            ...                                    \r\n                         +@@@+         .*@@#.   +@@@@@@= ...-*%%.   .*@@@@@@- -%%#:.          .+%%%%%%%%*:    .#%%%%#:.+@@@@@.  ..-#%+..=%@@%*.                 \r\n                        .@@@@%.           *=    *@@@@@@- .%@@@@%    .*@@@@@@=%@@@@@@#.     ..*@@@@@@@@@@+:.   .%@@@@@==@@@@@= +@@@@@@%@@@@@@@@@=                \r\n                        -@@@@@*.                *@@@@@%- .@@@@@-    .*@@@@@@@**@@@@@@@:   .*@@@@--*@@@@@@@+   .%@@@@@*@@@@@%  =@@@@@@@+:%@@@@@@#.               \r\n                        -@@@@@@@+.              *@@@@@%- =@@@%.     .*@@@@@@- .#@@@@@@+  .%@@@@+    +@@@@@@=  .@@@@@@@@=.#@=  =@@@@@@+. =@@@@@@#.               \r\n                        .@@@@@@@@@@@*:          *@@@@@%-.@@@*...    .*@@@@@@- .=@@@@@@+  #@@@@@=    :#@@@@@*  .@@@@@@@-       =@@@@@@+. :%@@@@@#.               \r\n                      -%@@@@@@@@@@@@=           *@@@@@%-%@@@@@@%+   .*@@@@@@-  -@@@@@@= :@@@@@@#    .*@@@@@+  .@@@@@@@.       =@@@@@@*. :#@@@@@+                \r\n                   .+@@@#  ..#%@@@@-            *@@@@@@%@@@@@@@@@%:..*@@@@@@-  :%@@@@@: .@@@@@@@%:. .#@@@@%   .@@@@@@@+::.    =@@@@@@*. :%@@@@@-                \r\n                  -@@@@#.       ...             *@@@@@@@=+%@@@@@@@%..#@@@@@@-  :%@@@@@.  -@@@@@@@@%**@@@@#.   .#@@@@@@@@%.    =@@@@@@*. -%@@@@@:                \r\n                 =@@@@@+.                       *@@@@@@=. ..%@@@@*..:#@@@@@@:  -@@@@@@   ..+@@@@@@@@@@@%..    ..#@@@@@@@:     -@@@@@@*. =@@@@*..                \r\n                -@@@@@@*.                     :.*@@@#*+.     -@%:   :##***+=. .=@@@@*.       .=*%@@@*:.          .=****-.     =%#***+-..*@#:.                   \r\n                +@@@@@@@%:                 :*@+ ....         ...              .*@@-..             ..                                   .:..                     \r\n                -@@@@@@@@@@@#-::.......:=%@@@#                                .-.                                                                               \r\n                .+@@@@@@@@@@@@@@@@@@@@@@@@@@%:                                                                                                                  \r\n                  :#@@@@@@@@@@@@@@@@@@@@@@@@-.                                                                                                                  \r\n                    .:*%@@@@@@@@@@@@@@@@%#=.                                                                                                                    \r\n                        ...:--------::..                                                                                                                        \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                ";
-            #endregion
-
-            Console.Write(Titielogo);
-
-            Console.SetCursorPosition(70, 35);
-            Console.Write("게임 시작");
-
-            Console.SetCursorPosition(70, 38);
-            Console.WriteLine("게임 종료");
-
-
-
-            while (isExit)
-            {
-
-                Console.CursorVisible = false;
-                Console.SetCursorPosition(68, 35);
-                Console.Write(cursor);
-
-
-            }
-            
-
-            //for (int i = 20; i < 60; i++)
-            //{
-            //    background[10,i] = Titielogo.ToCharArray();
-            //}
-
-        }
+        
+   
     }
 }
