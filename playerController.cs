@@ -13,7 +13,6 @@ namespace ConsoleProject
         Print print = new Print();
         backgroundManager back = new backgroundManager();
 
-
         public void PlayerMenu()
         {
             int cursorX = 12;

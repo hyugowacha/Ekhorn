@@ -13,10 +13,10 @@ namespace ConsoleProject
             Console.SetWindowSize(161, 51);
 
             Title title = new Title();
-            Player player = new Player(1,1,1);
-            //title.PrintTitle();
+            Intro intro = new Intro();
 
-            player.PlayerMenu();
+            //title.PrintTitle();
+            intro.CreatePlayer();
 
         }
     }

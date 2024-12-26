@@ -12,11 +12,11 @@ namespace ConsoleProject
 {
     partial class Player
     {
-        protected int _hp;
-        protected int _mp;
-        protected int _atk;
-        protected string _name;
-        protected char cursor = '▶';       
+        int _hp;
+        int _mp;
+        int _atk;
+        string _name;
+        char cursor = '▶';       
           
         #region
         public Player(int hp, int mp, int atk, string name = "해결사")
@@ -54,7 +54,10 @@ namespace ConsoleProject
       
         public void inventory()
         {
+            LinkedList<Item> invenlist = new LinkedList<Item>();
+            Item item = new Armour();
 
+            invenlist.AddLast(item);
         }
     }
 }

@@ -51,6 +51,7 @@
     <Compile Include="playerController.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartCutscene.cs" />
     <Compile Include="Title.cs" />
   </ItemGroup>
   <ItemGroup>
