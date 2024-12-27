@@ -65,7 +65,7 @@ namespace ConsoleProject
             Console.SetCursorPosition(70, 25);
             print.PrintPhrase(".............");
             Thread.Sleep(2500);
-            Console.SetCursorPosition(70, 45);
+            Console.SetCursorPosition(70, 25);
             print.printindex();
             
 

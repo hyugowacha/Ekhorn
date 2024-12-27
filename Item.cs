@@ -17,7 +17,17 @@ namespace ConsoleProject
         protected string _explain;
         protected int _price;
         protected Category _category;
-        protected int _num;
+
+        public string Name
+        { get { return _name; } }
+
+        public string Explain
+        { get { return _explain; } }
+
+        public int Price
+        { get { return _price; } }
+
+        
     }
 
     class Armour : Item
@@ -66,12 +76,6 @@ namespace ConsoleProject
             _category = Category.weapon;
         }
 
-        public int Num
-        {
-            get { return _num; }
-            set { _num = value; }
-        }
-        
-    }
 
+    }
 }

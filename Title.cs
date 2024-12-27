@@ -17,7 +17,7 @@ namespace ConsoleProject
             char cursor = '▶';
             char index = '　';
 
-            ConsoleKeyInfo input;
+            ConsoleKeyInfo keys;
             #region
             string Titielogo = "                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                ...                                                                                                                             \r\n                              :#@@@@%%=.          ..-+%%*              ..-#%=                                                                                   \r\n                            .*@@@@@@@@@@@=.     :@@@@@@@:           .+@@@@@@=                                                                                   \r\n                           :@@@@@@@@@@@@@@@-    -@@@@@@#.           .+@@@@@@-                                                                                   \r\n                          -%@%. .:#@@@@@@@@%:   =@@@@@@*.           .+@@@@@@-                                                                                   \r\n                         .%@@+      .=%@@@@%:   +@@@@@@=.           .+@@@@@@-                                            ...                                    \r\n                         +@@@+         .*@@#.   +@@@@@@= ...-*%%.   .*@@@@@@- -%%#:.          .+%%%%%%%%*:    .#%%%%#:.+@@@@@.  ..-#%+..=%@@%*.                 \r\n                        .@@@@%.           *=    *@@@@@@- .%@@@@%    .*@@@@@@=%@@@@@@#.     ..*@@@@@@@@@@+:.   .%@@@@@==@@@@@= +@@@@@@%@@@@@@@@@=                \r\n                        -@@@@@*.                *@@@@@%- .@@@@@-    .*@@@@@@@**@@@@@@@:   .*@@@@--*@@@@@@@+   .%@@@@@*@@@@@%  =@@@@@@@+:%@@@@@@#.               \r\n                        -@@@@@@@+.              *@@@@@%- =@@@%.     .*@@@@@@- .#@@@@@@+  .%@@@@+    +@@@@@@=  .@@@@@@@@=.#@=  =@@@@@@+. =@@@@@@#.               \r\n                        .@@@@@@@@@@@*:          *@@@@@%-.@@@*...    .*@@@@@@- .=@@@@@@+  #@@@@@=    :#@@@@@*  .@@@@@@@-       =@@@@@@+. :%@@@@@#.               \r\n                      -%@@@@@@@@@@@@=           *@@@@@%-%@@@@@@%+   .*@@@@@@-  -@@@@@@= :@@@@@@#    .*@@@@@+  .@@@@@@@.       =@@@@@@*. :#@@@@@+                \r\n                   .+@@@#  ..#%@@@@-            *@@@@@@%@@@@@@@@@%:..*@@@@@@-  :%@@@@@: .@@@@@@@%:. .#@@@@%   .@@@@@@@+::.    =@@@@@@*. :%@@@@@-                \r\n                  -@@@@#.       ...             *@@@@@@@=+%@@@@@@@%..#@@@@@@-  :%@@@@@.  -@@@@@@@@%**@@@@#.   .#@@@@@@@@%.    =@@@@@@*. -%@@@@@:                \r\n                 =@@@@@+.                       *@@@@@@=. ..%@@@@*..:#@@@@@@:  -@@@@@@   ..+@@@@@@@@@@@%..    ..#@@@@@@@:     -@@@@@@*. =@@@@*..                \r\n                -@@@@@@*.                     :.*@@@#*+.     -@%:   :##***+=. .=@@@@*.       .=*%@@@*:.          .=****-.     =%#***+-..*@#:.                   \r\n                +@@@@@@@%:                 :*@+ ....         ...              .*@@-..             ..                                   .:..                     \r\n                -@@@@@@@@@@@#-::.......:=%@@@#                                .-.                                                                               \r\n                .+@@@@@@@@@@@@@@@@@@@@@@@@@@%:                                                                                                                  \r\n                  :#@@@@@@@@@@@@@@@@@@@@@@@@-.                                                                                                                  \r\n                    .:*%@@@@@@@@@@@@@@@@%#=.                                                                                                                    \r\n                        ...:--------::..                                                                                                                        \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                \r\n                                                                                                                                                                ";
             #endregion
@@ -40,8 +40,9 @@ namespace ConsoleProject
                 while (isExit)
                 {
 
-                    input = Console.ReadKey(true);
-                    if (input.Key == ConsoleKey.DownArrow)
+                    keys = Console.ReadKey(true);
+                   
+                    if (keys.Key == ConsoleKey.DownArrow)
                     {
                         Console.SetCursorPosition(68, 35);
                         Console.Write(index);
@@ -50,7 +51,7 @@ namespace ConsoleProject
 
                     }
 
-                    if (input.Key == ConsoleKey.UpArrow)
+                    if (keys.Key == ConsoleKey.UpArrow)
                     {
                         Console.SetCursorPosition(68, 38);
                         Console.Write(index);
@@ -58,13 +59,13 @@ namespace ConsoleProject
                         Console.Write(cursor);
                     }
 
-                    if (Console.CursorTop == 35 && input.Key == ConsoleKey.Enter)
+                    if (Console.CursorTop == 35 && keys.Key == ConsoleKey.Enter)
                     {
                         Console.Clear();
                         intro.IntroCutscene();
                     }
 
-                    if (Console.CursorTop == 38 && input.Key == ConsoleKey.Enter)
+                    if (Console.CursorTop == 38 && keys.Key == ConsoleKey.Enter)
                     {
                         isExit = false;
                     }
