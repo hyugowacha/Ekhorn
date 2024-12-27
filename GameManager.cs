@@ -35,6 +35,7 @@ namespace ConsoleProject
             //}
 
             player = new Player(1, 1, 1);
+            
 
             //player.PlayerAction();
             //player.PlayerMenu();

@@ -21,6 +21,12 @@ namespace ConsoleProject
         LinkedList<Item> invenlist = new LinkedList<Item>();
         Item item { get; set; }
 
+        public LinkedList<Item> Invenlist
+        {
+            get { return invenlist; }
+            set { invenlist = value; }
+        }
+
         #region
         public Player(int hp, int mp, int atk, string name = "해결사")
         {
