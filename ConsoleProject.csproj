@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="backgroundManager.cs" />
+    <Compile Include="GameManager.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Intro.cs" />
     <Compile Include="main.cs" />
