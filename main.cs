@@ -16,7 +16,8 @@ namespace ConsoleProject
             Intro intro = new Intro();
 
             //title.PrintTitle();
-            intro.CreatePlayer();
+            //intro.CreatePlayer();
+            intro.StartAtEkhorn();
 
         }
     }

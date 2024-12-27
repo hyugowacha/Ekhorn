@@ -16,8 +16,9 @@ namespace ConsoleProject
         int _mp;
         int _atk;
         string _name;
-        char cursor = '▶';       
-          
+        char cursor = '▶';
+        LinkedList<Item> invenlist = new LinkedList<Item>();
+
         #region
         public Player(int hp, int mp, int atk, string name = "해결사")
         {
@@ -50,11 +51,12 @@ namespace ConsoleProject
             get { return _name; }
             set { _name = value; }
         }
+
+        
         #endregion
-      
+
         public void inventory()
         {
-            LinkedList<Item> invenlist = new LinkedList<Item>();
             Item item = new Armour();
 
             invenlist.AddLast(item);
