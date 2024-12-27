@@ -88,7 +88,7 @@ namespace ConsoleProject
 
             print.PrintPhrase("'에크혼 알파'를 획득하였습니다.");
             print.next();
-
+          
 
         }
 

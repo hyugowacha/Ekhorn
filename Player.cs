@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -87,8 +88,8 @@ namespace ConsoleProject
 
             int RightcursorX = cursorX + 40;
 
-            while (isExit)
-            {
+            
+                #region 인벤토리목록
                 Console.SetCursorPosition(cursorX - 2, cursorY - 2);
                 print.PrintPhrase("ESC를 눌러 뒤로가기");
                 Thread.Sleep(500);
@@ -116,8 +117,19 @@ namespace ConsoleProject
 
                 Console.SetCursorPosition(RightcursorX - 2, tap4cursorY);
                 Console.WriteLine($"8. {PrintItemName(7)}");
-            }
-            
+                #endregion
+          
+                keys = Console.ReadKey(true);
+
+                //ConsoleKey.D1;
+                
+            if(keys.Key == ConsoleKey.D1 || keys.Key == ConsoleKey.NumPad1) { }
+                
+                if(keys.Key == ConsoleKey.Escape)
+                {
+                    PlayerMenu();
+                }
+                       
         }
 
         public string PrintItemName(int arraynum)

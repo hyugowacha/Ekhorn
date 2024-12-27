@@ -18,7 +18,7 @@ namespace ConsoleProject
             Player player;
             String Playername;
 
-            title.PrintTitle();
+            //title.PrintTitle();
             //intro.CreatePlayer();
             //intro.StartAtEkhorn();
 
@@ -35,10 +35,12 @@ namespace ConsoleProject
             //}
 
             player = new Player(1, 1, 1);
-            
+
+            Item ekhorn = new Gun();
+            player.Invenlist.AddLast(ekhorn);
 
             //player.PlayerAction();
-            //player.PlayerMenu();
+            player.PlayerMenu();
             
 
         }       
