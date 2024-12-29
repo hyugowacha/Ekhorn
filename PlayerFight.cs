@@ -118,7 +118,7 @@ namespace ConsoleProject
 
                         if (keys.Key == ConsoleKey.D1)
                         {
-                            if (MP > 8)
+                            if (MP >= 8)
                             {
                                 back.Textbox();
                                 Console.SetCursorPosition(cursorX, cursorY);
@@ -145,7 +145,7 @@ namespace ConsoleProject
 
                         if (keys.Key == ConsoleKey.D2)
                         {
-                            if (MP > 0)
+                            if (MP >= 0)
                             {
                                 back.Textbox();
                                 Console.SetCursorPosition(cursorX, cursorY);
@@ -172,7 +172,7 @@ namespace ConsoleProject
 
                         if (keys.Key == ConsoleKey.D3)
                         {
-                            if (MP > 6)
+                            if (MP >= 6)
                             {
                                 back.Textbox();
                                 Console.SetCursorPosition(cursorX, cursorY);
@@ -199,7 +199,7 @@ namespace ConsoleProject
 
                         if (keys.Key == ConsoleKey.D4)
                         {
-                            if (MP > 2)
+                            if (MP >= 2)
                             {
                                 back.Textbox();
                                 Console.SetCursorPosition(cursorX, cursorY);
@@ -219,7 +219,7 @@ namespace ConsoleProject
                                 print.next();
                             }
 
-                            else if (MP > 2)
+                            else if (MP < 2)
                             {
                                 back.Textbox();
                                 Console.SetCursorPosition(cursorX, cursorY);
@@ -233,6 +233,11 @@ namespace ConsoleProject
                         if (keys.Key == ConsoleKey.Escape)
                         {
                             continue;
+                        }
+
+                        if (enemy.HP < 0)
+                        {
+                            enemy.HP = 0;
                         }
 
                         Console.SetCursorPosition(70, 0);
@@ -312,9 +317,12 @@ namespace ConsoleProject
                         }
                     }
 
-
-
                 }
+            }
+
+            if (enemy.HP == 0)
+            {
+                enemy.Die(this);
             }
 
             if (HP < 0)
@@ -331,10 +339,7 @@ namespace ConsoleProject
                 title.PrintTitle();
             }
 
-            else if (enemy.HP < 0)
-            {
-                enemy.Die(this);
-            }
+            
         }
 
 

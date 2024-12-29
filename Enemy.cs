@@ -34,7 +34,7 @@ namespace ConsoleProject
         public Eichmann()
         {
             _name = "Dr. 아이히만";
-            _hp = 820;
+            _hp = 420;
             _atk = 5;
             _def = 20;
         }

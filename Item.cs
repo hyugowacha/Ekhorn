@@ -109,7 +109,7 @@ namespace ConsoleProject
         public Potion(int price)
         {
             _name = "X-090892";
-            _explain = "케나인들이 즐겨 마시는 에너지 드링크. HP + 20";
+            _explain = "케나인들이 즐겨 마시는 에너지 드링크. HP + 40";
             _price = price;
             _category = Category.useable;
             _itemCode = 3;
@@ -117,7 +117,7 @@ namespace ConsoleProject
 
         public override void ItemEffect(Player player)
         {
-            player.HP += 20;
+            player.HP += 40;
 
             if(player.HP > 100)
             {

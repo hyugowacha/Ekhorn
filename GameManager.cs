@@ -18,12 +18,11 @@ namespace ConsoleProject
             Intro intro = new Intro();
             Player player;
             String Playername;
+            Region region = new Region();
+           
+            Console.CursorVisible = false;
+            intro.CreatePlayer();
 
-            //title.PrintTitle();
-            //intro.StartAtEkhorn();
-
-            //intro.CreatePlayer();
-            
             Playername = intro.playerName;
             
             if (Playername == "")
@@ -43,22 +42,13 @@ namespace ConsoleProject
                        
             Item ekhorn = new Gun();
             Item basicArmour = new Armour();
-            Item potion = new Potion(20);
 
             player[0] = basicArmour;
             player[1] = ekhorn;
             basicArmour.ItemEffect(player);
             ekhorn.ItemEffect(player);          
 
-            Region region = new Region();
-            Enemy enemy =  new Eichmann();
-
-            player = new Player(100, 20, 10, 1, 3000, Playername);
-            player.Invenlist.AddLast(ekhorn);
-            player.Invenlist.AddLast(potion);
-
-            player.PlayerFight(enemy);
-            //region.Totrich(player);
+            region.Totrich(player);
         }       
 
 

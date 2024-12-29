@@ -65,10 +65,7 @@ namespace ConsoleProject
             print.PrintPhrase(".............");
             Thread.Sleep(2500);
             Console.SetCursorPosition(70, 25);
-            print.printindex();
-            
-
-            CreatePlayer();
+            print.printindex();           
         }
 
     }

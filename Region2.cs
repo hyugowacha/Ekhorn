@@ -217,6 +217,7 @@ namespace ConsoleProject
             print.PrintPhrase("To Be Contunue");
             Thread.Sleep(4000);
 
+            Environment.Exit(0);
         }
     }
 }

@@ -38,10 +38,22 @@ namespace ConsoleProject
             Console.Write(EkhornOffice);
             Thread.Sleep(1000);
 
-            back.Textbox();
-            Console.SetCursorPosition(cursorX, cursorY);
-            print.PrintPhrase($"게오르그 : 뭐야. {player.Name}, 두고 간 물건이라도 있어? 파비안이 기다릴테니 어서 가보라고.");
-            print.next();
+            if(player.Progress == 0)
+            {
+                back.Textbox();
+                Console.SetCursorPosition(cursorX, cursorY);
+                print.PrintPhrase($"게오르그 : 뭐야. {player.Name}, 두고 간 물건이라도 있어? 파비안이 기다릴테니 어서 가보라고.");
+                print.next();
+            }
+
+            else if(player.Progress == 1)
+            {
+                back.Textbox();
+                Console.SetCursorPosition(cursorX, cursorY);
+                print.PrintPhrase("사무실 안은 쥐 죽은 듯 고요하다....");
+                print.next();
+            }
+            
 
             while (true)
             {
@@ -94,10 +106,21 @@ namespace ConsoleProject
                         {
                             back.Textbox();
                             Console.SetCursorPosition(cursorX, cursorY);
-                            print.PrintPhrase("게오르그, 파비안, 내가 일하는 용병 사무소다.");
-                            Console.SetCursorPosition(cursorX, cursorY + 2);
-                            print.PrintPhrase("일상은 반복될것이다. 늘 그랬듯이.");
-                            print.next();
+
+                            if(player.Progress == 0)
+                            {
+                                print.PrintPhrase("게오르그, 파비안, 내가 일하는 용병 사무소다.");
+                                Console.SetCursorPosition(cursorX, cursorY + 2);
+                                print.PrintPhrase("일상은 반복될것이다. 늘 그랬듯이.");
+                                print.next();
+                            }
+                            
+                            else if(player.Progress == 1)
+                            {
+                                print.PrintPhrase("파비안을... 막으러 가야만 한다.");                                
+                                print.next();
+                            }
+
                             isExit = false;
                         }
 
@@ -695,6 +718,9 @@ namespace ConsoleProject
 
         public void secondEkforn(Player player)
         {
+            player.HP = 100;
+            player.MP = 20;
+            player.Silling += 2000;
             string Openeye = "                    @@      @@   @@                                      @      @@                                                                              \r\n                    @@      @@@  @@                                      @      @@                                                                              \r\n                    @@      @@@  @@                                      @@     @@                                                                              \r\n                    @       @@@  @@                                      @@     @@                                                                              \r\n                    @       @@@  @@                                  @@@@@@     @@                                                                              \r\n                    @       @@@  @@                               @@@@@@@@@@@@@ @@                                                                              \r\n                    @@       @@  @@@                          @@@@@@@   @@    @@@@                                                                              \r\n                    @@       @@   @@                          @    @@  @@@@@@@@@@@                                                                              \r\n                    @@       @@   @@                          @    @@  @@@@@@@@@@@                                   @@@@@@@@@@@@@@@@@@                         \r\n                    @@       @@   @@                          @    @@@  @@    @@@@                                  @@@@@@@@@@@@@@@@@@@@                        \r\n   @@@@@@@@@@@      @@       @@   @@                          @     @@@@@@@@@@@@@@@@@@                               @ @@             @@                        \r\n@@@@@@   @@@@@@     @@       @@   @@                   @@@@@@@@@@@@@@@@@@@      @@@@ @                               @ @@             @@                        \r\n@@@@@@@@@@@  @@@    @@       @@   @@              @@@@@@                     @@@@  @@@                               @ @@             @@                        \r\n         @@  @@@    @@       @@   @@         @@@@@@                        @@@@ @@@@@                                @@@@@@@@@@@@@@@@@@                         \r\n         @@  @@@     @@      @@   @@    @@@@@@                           @@@  @@@  @@                                 @ @@          @@                          \r\n @@@     @@@@@    @@@@@@     @@   @@@@@@@  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @@@@    @@                                 @ @@          @@                          \r\n@@@@@@@@@@@ @@@@@@@    @@    @@  @@@@@@@@@@@@@@@@@@@@@@  @             @@@@@       @@                                 @ @@          @@                          \r\n         @  @@         @@    @@  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@           @                                @@ @@          @@                          \r\n         @@ @@         @@@@@@@@@@@ @@@ @@                   @@@@@@@@@@@@@@@@@@@@@@  @                                 @ @@          @@                          \r\n         @@ @@         @@@   @@@   @@@ @@         @@@@@@@@@@@@@@@               @@  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ @ @@         @@@                          \r\n         @@ @@@        @@          @@@@@@@@@@@@@@@@@                            @@@@@@@@@@@                         @@@ @@         @@@                          \r\n         @@ @@@@@@@@@@@@@@@@@@@@@@@@@@            @@                            @@                                  @@@ @@         @@@                          \r\n         @@  @@@@                                 @@                            @@                                  @@@ @@@        @@                           \r\n         @@  @@@@                                 @@                            @@                                  @@@ @@@        @@                           \r\n         @@  @@@@                                 @@                            @@                                  @@@@@@@        @@                           \r\n         @@  @@@@                                 @@                            @@                                  @@ @@@@@@@@@@@@@@@                          \r\n          @  @@@@                                 @@                            @@                                  @@              @@@                         \r\n          @ @@@@@                               @@@@@              @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@               @@                         \r\n@@@@@@@@@@@@@  @@  @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@    @@@@@@@@@@@@@@@@@@         @@@@                                @@@@             @@                         \r\n          @@   @@@@@@@@@@@@                    @@     @@                     @@@@  @@                                  @@@           @@                         \r\n          @@@@@@                               @@@     @@@@                 @@@ @@@@@                                    @@@@@@@@@@@@@@                         \r\n          @@@@                                  @@@      @@@               @@     @@@                                     @@@@@@@  @@                           \r\n        @@@                                     @@@@@@     @@            @@@        @@                                       @@@   @@                           \r\n@@@@@@@@@                                      @@@   @@@@   @@@         @@           @@                                        @@@ @@                           \r\n   @@@@                                      @@@        @@@   @@      @@@    @@@@@@@@@@                                          @@@@                           \r\n @@@                                        @@           @@@   @     @@@   @@@       @@@                                           @@@                          \r\n@@                                         @@             @@@@@@     @@@ @@            @@                                           @@@@                        \r\n                                         @@@               @@@         @@@              @@                                            @@@                       \r\n                                        @@                  @@         @@@              @@@                                             @@@                     \r\n                                       @@                    @@       @@@                @@                                               @@@                   \r\n                                      @@                @@@@@@@@@@@@@@@@@@@@@@@@         @@                                                 @@@                 \r\n                                  @@@@@         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@  @@@@@@   @@@@@                                                @@@@               \r\n                                @@@@@      @@@@@@@                         @@@@@@@ @@@@@@@  @@@                                                @@@              \r\n                              @@@       @@@@@                                    @@@@  @@@    @@                                                 @@@            ";
 
             Console.Clear();
