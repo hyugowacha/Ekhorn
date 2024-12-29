@@ -31,6 +31,11 @@ namespace ConsoleProject
         public Category Category
         { get { return _category; } }
 
+        public int ItemCode
+        {
+            get { return _itemCode; }
+        }
+
         public virtual void ItemEffect(Player player) { }
     }
 
@@ -98,6 +103,7 @@ namespace ConsoleProject
             _explain = "케나인들이 즐겨 마시는 에너지 드링크. HP + 20";
             _price = price;
             _category = Category.useable;
+            _itemCode = 3;
         }
 
         public override void ItemEffect(Player player)

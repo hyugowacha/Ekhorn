@@ -46,9 +46,16 @@ namespace ConsoleProject
             player[1] = ekhorn;
             
 
-            region.Totrich(player);
+            //region.Totrich(player);
             //region.EichmannLab(player);
+            Enemy enemy = new Eichmann();
 
+            Item temppotion = new Potion(20);
+            player.AddItem(temppotion);
+
+            player.PlayerFight(enemy);
+
+            //enemy.Attack(player);
         }       
 
 

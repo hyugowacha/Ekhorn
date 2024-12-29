@@ -177,10 +177,7 @@ namespace ConsoleProject
 
         public void AddItem(Item item)
         {
-            if (invenlist.Count < 9)
-            {
-                invenlist.AddLast(item);
-            }
+             invenlist.AddLast(item);
         }
 
         public void UseItem(Item item)
