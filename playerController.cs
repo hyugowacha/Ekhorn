@@ -105,7 +105,7 @@ namespace ConsoleProject
             if (_progress == 0)
             {
                 Console.SetCursorPosition(cursorX + 2, tap3cursorY);
-                Console.WriteLine("아이히만 박사의 연구소");
+                Console.WriteLine("아이히만의 연구기지");
             }
 
             else if (_progress == 1)

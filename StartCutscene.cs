@@ -38,8 +38,7 @@ namespace ConsoleProject
 
             Console.SetCursorPosition(72, 25);
             Playername = Console.ReadLine();
-           
-            
+                      
             Thread.Sleep(1000);
 
             StartAtEkhorn();
@@ -123,7 +122,7 @@ namespace ConsoleProject
             print.PrintPhrase("...뭐, 이게 중요한 건 아니지만.");
             print.next();
 
-            print.PrintPhrase("먼저 아이히만 박사의 연구실 근처로 가있을테니, 마을에서 충분한 준비가 끝나면 오도록 해.");
+            print.PrintPhrase("먼저 아이히만 박사의 연구기지 근처로 가있을테니, 마을에서 충분한 준비가 끝나면 오도록 해.");
             print.next();
 
             print.PrintPhrase("빨리 끝내고 한 잔 하러 가자고.   -파비안");
