@@ -31,7 +31,7 @@ namespace ConsoleProject
 
             while (isExit)
             {
-                //Console.CursorVisible = false;
+                Console.CursorVisible = false;
 
                 Console.SetCursorPosition(68, 35);
                 Console.Write(cursor);

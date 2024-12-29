@@ -26,9 +26,8 @@ namespace ConsoleProject
 
         Item item { get; set; }
 
-
         #region 생성자 & 프로퍼티
-        public Player(int hp, int mp, int mpRefill, int atk, int silling = 3000, string name = "해결사")
+        public Player(int hp, int mp, int mpRefill, int atk, int silling, string name = "해결사")
         {
             _progress = 0;
             _hp = hp;

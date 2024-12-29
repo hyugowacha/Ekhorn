@@ -16,7 +16,8 @@ namespace ConsoleProject
 
         public string playerName
         {
-            get { return playerName; }
+            get { return Playername; }
+            set { Playername = value; } 
         }
 
         #region imageSource
@@ -86,8 +87,7 @@ namespace ConsoleProject
 
             print.PrintPhrase("사무소를 나가 충분한 준비를 한 후 아이히만 박사의 연구소로 출발하자.");
             print.next();
-
-                
+            
         }
 
         public void FabienNote()

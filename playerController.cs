@@ -219,7 +219,15 @@ namespace ConsoleProject
                             {
                                 if (Console.CursorTop == cursorY + 2)
                                 {
-                                    region.BeforeEichmann(this);
+                                    if(Progress == 0)
+                                    {
+                                        region.BeforeEichmann(this);
+                                    }
+                                    
+                                    else if (Progress == 1)
+                                    {
+                                        region.Temple(this);
+                                    }
                                 }
 
                                 else if (Console.CursorTop == cursorY + 4)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -19,43 +20,45 @@ namespace ConsoleProject
             String Playername;
 
             //title.PrintTitle();
-            //intro.CreatePlayer();
             //intro.StartAtEkhorn();
 
-            //Playername = intro.playerName;
-            //
-            //if (Playername == null)
-            //{
-            //    player = new Player(100, 20, 10);
-            //}
-            //
-            //else
-            //{
-            //    player = new Player(100, 20, 10, Playername);
-            //}
+            //intro.CreatePlayer();
+            
+            Playername = intro.playerName;
+            
+            if (Playername == "")
+            {
+                player = new Player(100, 20, 1, 10, 3000);
+            }
+            
+            else if(Playername != "")
+            {              
+                player = new Player(100, 20, 10, 1, 3000, Playername);
+            }
 
-            Region region = new Region();
-
-            player = new Player(100, 20, 1, 1);
-             
-
+            else
+            {
+                player = new Player(100, 20, 1, 10, 3000);
+            }
+                       
             Item ekhorn = new Gun();
             Item basicArmour = new Armour();
+            Item potion = new Potion(20);
 
             player[0] = basicArmour;
             player[1] = ekhorn;
-            
+            basicArmour.ItemEffect(player);
+            ekhorn.ItemEffect(player);          
 
-            //region.Totrich(player);
-            //region.EichmannLab(player);
-            Enemy enemy = new Eichmann();
+            Region region = new Region();
+            Enemy enemy =  new Eichmann();
 
-            Item temppotion = new Potion(20);
-            player.AddItem(temppotion);
+            player = new Player(100, 20, 10, 1, 3000, Playername);
+            player.Invenlist.AddLast(ekhorn);
+            player.Invenlist.AddLast(potion);
 
             player.PlayerFight(enemy);
-
-            //enemy.Attack(player);
+            //region.Totrich(player);
         }       
 
 

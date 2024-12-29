@@ -23,7 +23,7 @@ namespace ConsoleProject
             foreach (char c in phrase)
             {
                 Console.Write(c);
-                Thread.Sleep(50);
+                Thread.Sleep(30);
             }
         }
 

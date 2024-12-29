@@ -20,7 +20,6 @@ namespace ConsoleProject
 
         public void IntroCutscene()
         {
-
             Thread.Sleep(2000);
             Console.SetCursorPosition(70, 25);
             print.PrintPhrase("기다렸습니다...");

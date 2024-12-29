@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -9,20 +10,46 @@ namespace ConsoleProject
 {
     partial class Player
     {
+        string V = "X-090892";
         int debuffCount = 0;
-        int tempDef;
+        int enemyDef;
 
         public void PlayerFight(Enemy enemy)
         {
             bool turn = true;
-            int damage;
+            float damage;
+            enemyDef = enemy.Def;
+            Title title = new Title();
+            int maxhp = enemy.HP;
+            Item[] items = new Item[8];
+            int count = 0;
 
-            while (HP > 0 || enemy.HP > 0)
+            while (HP > 0 && enemy.HP > 0)
             {
                 turn = true;
 
+
                 while (turn)
                 {
+                    Console.SetCursorPosition(0, 0);
+                    for (int i = 0; i < Console.BufferWidth; i++)
+                    {
+                        Console.Write(' ');
+                    }
+
+                    Console.SetCursorPosition(0, 1);
+
+                    for (int i = 0; i < Console.BufferWidth; i++)
+                    {
+                        Console.Write(' ');
+                    }
+
+                    Console.SetCursorPosition(70, 0);
+                    Console.Write($"{enemy.Name}");
+                    Console.SetCursorPosition(68, 1);
+                    Console.Write($"((( {enemy.HP} / {maxhp} )))");
+
+
                     back.Textbox();
                     Console.SetCursorPosition(cursorX, cursorY + 2);
 
@@ -62,7 +89,7 @@ namespace ConsoleProject
                         Console.SetCursorPosition(cursorX, cursorY + 2);
                         Console.Write("2. 퀵 샷");
                         Console.SetCursorPosition(cursorX + 20, cursorY + 2);
-                        Console.Write("빠르게 사격하여 피해를 입힌다. MP 1 소모");
+                        Console.Write("빠르게 사격하여 피해를 입힌다. MP 0 소모");
 
                         Console.SetCursorPosition(cursorX, cursorY + 4);
                         Console.Write("3. 잔혹한 추적자");
@@ -98,12 +125,12 @@ namespace ConsoleProject
                                 print.PrintPhrase($"{Name}는(은) 데스페라도를(을) 사용했다.");
                                 Console.SetCursorPosition(cursorX, cursorY + 2);
 
-                                damage = (int)(Atk * 100 * ((100 - enemy.Def)/100));
+                                damage = Atk * 10 * ((100 - enemy.Def) / 100.0f);
                                 print.PrintPhrase($"{damage}만큼의 데미지를 입혔다!");
-                                enemy.HP -= damage;
+                                enemy.HP -= (int)damage;
                                 MP -= 8;
 
-                                Thread.Sleep(2000);
+                                print.next();
                             }
 
                             else if (MP < 8)
@@ -111,65 +138,112 @@ namespace ConsoleProject
                                 back.Textbox();
                                 Console.SetCursorPosition(cursorX, cursorY);
                                 print.PrintPhrase("MP가 부족합니다.");
-                                Thread.Sleep(2000);
+                                print.next();
                                 continue;
                             }
                         }
 
                         if (keys.Key == ConsoleKey.D2)
                         {
-                            if (MP > 1)
+                            if (MP > 0)
                             {
                                 back.Textbox();
                                 Console.SetCursorPosition(cursorX, cursorY);
                                 print.PrintPhrase($"{Name}는(은) 퀵 샷를(을) 사용했다.");
                                 Console.SetCursorPosition(cursorX, cursorY + 2);
 
-                                damage = (int)(Atk * 50 * ((100 - enemy.Def) / 100));
+                                damage = Atk * 3 * ((100 - enemy.Def) / 100.0f);
                                 print.PrintPhrase($"{damage}만큼의 데미지를 입혔다!");
-                                enemy.HP -= damage;
+                                enemy.HP -= (int)damage;
+                                MP -= 0;
 
-                                Thread.Sleep(2000);
+                                print.next();
                             }
 
+                            else if (MP < 0)
+                            {
+                                back.Textbox();
+                                Console.SetCursorPosition(cursorX, cursorY);
+                                print.PrintPhrase("MP가 부족합니다.");
+                                print.next();
+                                continue;
+                            }
                         }
 
                         if (keys.Key == ConsoleKey.D3)
                         {
-                            back.Textbox();
-                            Console.SetCursorPosition(cursorX, cursorY);
-                            print.PrintPhrase($"{Name}는(은) 잔혹한 추적자를(을) 사용했다.");
-                            Console.SetCursorPosition(cursorX, cursorY + 2);
+                            if (MP > 6)
+                            {
+                                back.Textbox();
+                                Console.SetCursorPosition(cursorX, cursorY);
+                                print.PrintPhrase($"{Name}는(은) 잔혹한 추적자를(을) 사용했다.");
+                                Console.SetCursorPosition(cursorX, cursorY + 2);
 
-                            damage = (int)(Atk * 80 * ((100 - enemy.Def) / 100));
-                            print.PrintPhrase($"{damage}만큼의 데미지를 입혔다!");
-                            enemy.HP -= damage;
+                                damage = Atk * 8 * ((100 - enemy.Def) / 100.0f);
+                                print.PrintPhrase($"{damage}만큼의 데미지를 입혔다!");
+                                enemy.HP -= (int)damage;
+                                MP -= 6;
 
-                            Thread.Sleep(2000);
+                                print.next();
+                            }
+
+                            else if (MP < 6)
+                            {
+                                back.Textbox();
+                                Console.SetCursorPosition(cursorX, cursorY);
+                                print.PrintPhrase("MP가 부족합니다.");
+                                print.next();
+                                continue;
+                            }
                         }
 
                         if (keys.Key == ConsoleKey.D4)
                         {
-                            back.Textbox();
-                            Console.SetCursorPosition(cursorX, cursorY);
-                            print.PrintPhrase($"{Name}는(은) 이퀼리브리엄를(을) 사용했다.");
+                            if (MP > 2)
+                            {
+                                back.Textbox();
+                                Console.SetCursorPosition(cursorX, cursorY);
+                                print.PrintPhrase($"{Name}는(은) 이퀼리브리엄를(을) 사용했다.");
 
-                            damage = (int)(Atk * 50 * ((100 - enemy.Def) / 100));
+                                damage = Atk * 5 * ((100 - enemy.Def) / 100.0f);
 
-                            Console.SetCursorPosition(cursorX, cursorY + 2);
-                            print.PrintPhrase($"{damage}만큼의 데미지를 입혔다!");
-                            Console.SetCursorPosition(cursorX, cursorY + 4);
-                            print.PrintPhrase("5턴동안 보스의 방어력이 감소한다!");
+                                Console.SetCursorPosition(cursorX, cursorY + 2);
+                                print.PrintPhrase($"{damage}만큼의 데미지를 입혔다!");
+                                Console.SetCursorPosition(cursorX, cursorY + 4);
+                                print.PrintPhrase("5턴동안 보스의 방어력이 감소한다!");
+                                MP -= 2;
 
-                            debuffCount = 6;
-                            enemy.HP -= damage;
+                                debuffCount = 5;
+                                enemy.HP -= (int)damage;
 
-                            Thread.Sleep(2000);
+                                print.next();
+                            }
+
+                            else if (MP > 2)
+                            {
+                                back.Textbox();
+                                Console.SetCursorPosition(cursorX, cursorY);
+                                print.PrintPhrase("MP가 부족합니다.");
+                                print.next();
+                                continue;
+                            }
+
                         }
+
+                        if (keys.Key == ConsoleKey.Escape)
+                        {
+                            continue;
+                        }
+
+                        Console.SetCursorPosition(70, 0);
+                        Console.Write($"{enemy.Name}");
+                        Console.SetCursorPosition(68, 1);
+                        Console.Write($"((( {enemy.HP} / {maxhp} )))");
+
+                        Debuff(enemy);
 
                         debuffCount--;
 
-                        Debuff(enemy);
 
                         MP += MPRefill;
 
@@ -179,74 +253,111 @@ namespace ConsoleProject
                         }
 
                         turn = false;
+                        enemy.Attack(this);
                     }
+
+
 
                     else if (keys.Key == ConsoleKey.D2)
                     {
-                        foreach (Item item in invenlist)
+                        Item tempitem = null;
+
+                        foreach (Item itemA in invenlist)
                         {
-                            if (item.ItemCode == 1 || item.ItemCode == 2)
+                            if (itemA.ItemCode == 3)
                             {
-                                back.Textbox();
-                                Console.SetCursorPosition(cursorX, cursorY);
-                                Console.Write("사용할 수 있는 포션이 없습니다.");
-                                Thread.Sleep(2000);
+                                tempitem = itemA;
+                                invenlist.Remove(itemA);
                                 break;
-                            }
-
-                            else if (item.ItemCode == 3)
-                            {
-                                back.Textbox();
-                                Console.SetCursorPosition(cursorX, cursorY);
-                                print.PrintPhrase("포션을 사용하시겠습니까? 1.예 2.아니오");
-
-                                while (true)
-                                {
-                                    keys = Console.ReadKey(true);
-
-                                    if (keys.Key == ConsoleKey.D1 || keys.Key == ConsoleKey.D2)
-                                    {
-                                        break;
-                                    }
-                                }
-
-                                if (keys.Key == ConsoleKey.D1)
-                                {
-                                    back.Textbox();
-                                    Console.SetCursorPosition(cursorX, cursorY);
-                                    Console.Write("포션을 사용합니다.");
-                                    Thread.Sleep(2000);
-                                    invenlist.Remove(item);
-                                    break;
-                                }
-
-                                if (keys.Key == ConsoleKey.D2)
-                                {
-                                    break;
-                                }
                             }
                         }
 
+                        if(tempitem == null)
+                        {
+                            back.Textbox();
+                            Console.SetCursorPosition(cursorX, cursorY);
+                            print.PrintPhrase("사용 가능한 포션이 없습니다.");
+                            print.next();
+                            continue;
+                        }
+
+                        back.Textbox();
+                        Console.SetCursorPosition(cursorX, cursorY);
+                        print.PrintPhrase("포션을 사용하시겠습니까? 1.예 2.아니오");
+
+                        while (true)
+                        {
+                            keys = Console.ReadKey(true);
+
+                            if (keys.Key == ConsoleKey.D1 || keys.Key == ConsoleKey.D2)
+                            {
+                                break;
+                            }
+                        }
+
+                        if (keys.Key == ConsoleKey.D1)
+                        {
+                            back.Textbox();
+                            Console.SetCursorPosition(cursorX, cursorY);
+                            Console.Write("포션을 사용합니다.");
+                            tempitem.ItemEffect(this);
+                            print.next();
+                            count--;
+                            continue;
+                        }
+
+                        if (keys.Key == ConsoleKey.D2)
+                        {
+                            continue;
+                        }
                     }
 
+
+
                 }
-
-
             }
 
+            if (HP < 0)
+            {
+                back.Textbox();
+                Console.SetCursorPosition(cursorX, cursorY);
+                print.PrintPhrase($"{enemy.Name}와(과)의 전투에서 패배했다...");
+                print.next();
+
+                print.PrintPhrase("GAME OVER");
+                print.next();
+
+                Console.Clear();
+                title.PrintTitle();
+            }
+
+            else if (enemy.HP < 0)
+            {
+                enemy.Die(this);
+            }
         }
+
+
 
         public void Debuff(Enemy enemy)
         {
+
             if (debuffCount > 0)
             {
-                tempDef = enemy.Def;
-                enemy.Def = enemy.Def / 2;
+                if (debuffCount > 4)
+                {
+                    enemy.Def = enemyDef / 2;
+                }
+
+                else if (debuffCount <= 4)
+                {
+                    enemy.Def = enemy.Def;
+                }
             }
 
             else if (debuffCount <= 0)
             {
-                enemy.Def = tempDef;
+                enemy.Def = enemyDef;
             }
         }
     }

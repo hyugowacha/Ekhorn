@@ -43,6 +43,7 @@ namespace ConsoleProject
     {
         public Armour()
         {
+            _itemCode = 1;
             _name = "아르데타인산 기본 방어구";
             _explain = "아르데타인에서 가장 흔하게 구할 수 있는 방어구.";
             _category = Category.Armour;
@@ -50,6 +51,7 @@ namespace ConsoleProject
 
         public Armour(int price)
         {
+            _itemCode = 2;
             _name = "마력이 깃든 방어구";
             _explain = "마력이 깃들어있는 방어구. MP 회복 속도를 증가시켜 준다.";
             _price = price;
@@ -58,7 +60,14 @@ namespace ConsoleProject
 
         public override void ItemEffect(Player player)
         {
-            player.MPRefill = 3;
+            if (_itemCode == 1)
+            {
+                player.MPRefill = 1;
+            }
+            if (_itemCode == 2)
+            {
+                player.MPRefill = 3;
+            }              
         }
     }
 
