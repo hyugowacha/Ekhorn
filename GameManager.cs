@@ -47,8 +47,7 @@ namespace ConsoleProject
             
 
             region.Totrich(player);
-            
-            //player.PlayerMenu();
+            //region.EichmannLab(player);
 
         }       
 
