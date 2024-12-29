@@ -19,8 +19,8 @@ namespace ConsoleProject
             Player player;
             String Playername;
             Region region = new Region();
-           
-            Console.CursorVisible = false;
+
+            title.PrintTitle();
             intro.CreatePlayer();
 
             Playername = intro.playerName;
