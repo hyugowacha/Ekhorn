@@ -12,6 +12,8 @@ namespace ConsoleProject
     {
         Print print = new Print();
         backgroundManager back = new backgroundManager();
+        Region region = new Region();
+        
         int cursorX = 12;
         int cursorY = 34;
         ConsoleKeyInfo keys;
@@ -109,7 +111,7 @@ namespace ConsoleProject
             else if (_progress == 1)
             {
                 Console.SetCursorPosition(cursorX + 2, tap3cursorY);
-                Console.WriteLine("황야 지역");
+                Console.WriteLine("크라테르의 사원");
             }
 
             Console.SetCursorPosition(cursorX + 2, tap4cursorY);
@@ -163,20 +165,69 @@ namespace ConsoleProject
 
                     if (tempCursorY == cursorY)
                     {
-                        back.Textbox();
-                        Console.WriteLine("장비 확인 실행");
+                        region.Ekhorn(this);
                     }
 
                     else if (tempCursorY == tap2cursorY)
                     {
-                        back.Textbox();
-                        Console.WriteLine("스킬 확인 실행");
+                        region.Store(this);
                     }
 
                     else if (tempCursorY == tap3cursorY)
                     {
                         back.Textbox();
-                        Console.WriteLine("인벤토리 확인 실행");
+                        Console.SetCursorPosition(cursorX - 2, cursorY - 1);
+                        print.PrintPhrase("출발 전에 정말 준비가 다 되었는지 확인해보자.");
+
+                        Console.SetCursorPosition(cursorX + 2, cursorY + 2);
+                        Console.WriteLine("준비는 충분하다. 어서 출발하자.");
+
+                        Console.SetCursorPosition(cursorX + 2, cursorY + 4);
+                        Console.WriteLine("아직 준비가 다 되지 않았다.");
+
+                        Console.SetCursorPosition(cursorX, cursorY + 2);
+
+                        while (true)
+                        {
+                            Console.Write(cursor);
+
+                            while (true)
+                            {
+                                keys = Console.ReadKey(true);
+
+                                if (keys.Key == ConsoleKey.DownArrow || keys.Key == ConsoleKey.UpArrow || keys.Key == ConsoleKey.Enter)
+                                {
+                                    break;
+                                }
+                            }
+
+                            if (keys.Key == ConsoleKey.DownArrow)
+                            {
+                                Console.SetCursorPosition(cursorX, cursorY + 2);
+                                Console.Write('　');
+                                Console.SetCursorPosition(cursorX, cursorY + 4);
+                            }
+
+                            if (keys.Key == ConsoleKey.UpArrow)
+                            {
+                                Console.SetCursorPosition(cursorX, cursorY + 4);
+                                Console.Write('　');
+                                Console.SetCursorPosition(cursorX, cursorY + 2);
+                            }
+
+                            if (keys.Key == ConsoleKey.Enter)
+                            {
+                                if (Console.CursorTop == cursorY + 2)
+                                {
+                                    region.BeforeEichmann(this);
+                                }
+
+                                else if (Console.CursorTop == cursorY + 4)
+                                {
+                                    region.Totrich(this);
+                                }
+                            }
+                        }
                     }
 
                     else if (tempCursorY == tap4cursorY)
@@ -186,15 +237,11 @@ namespace ConsoleProject
                 }
             }
 
-
-
-
-
-
         }
 
         public void PlayerMenu()
         {
+            
             ConsoleKeyInfo keys;
             back.Textbox();
 
@@ -226,7 +273,7 @@ namespace ConsoleProject
 
             while (true)
             {               
-                Console.WriteLine(cursor);
+                Console.Write(cursor);
 
                 while (true)
                 {
@@ -271,19 +318,16 @@ namespace ConsoleProject
 
                     if (tempCursorY == cursorY)
                     {
-                        back.Textbox();
-                        Console.WriteLine("장비 확인 실행");
+                        CheckPlayerItem();
                     }
 
                     else if (tempCursorY == tap2cursorY)
                     {
-                        back.Textbox();
-                        Console.WriteLine("스킬 확인 실행");
+                        CheckSkill();
                     }
 
                     else if (tempCursorY == tap3cursorY)
-                    {
-                        back.Textbox();                        
+                    {                    
                         inventory();
                     }
 

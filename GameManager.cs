@@ -34,14 +34,21 @@ namespace ConsoleProject
             //    player = new Player(100, 20, 10, Playername);
             //}
 
-            player = new Player(1, 1, 1);
+            Region region = new Region();
+
+            player = new Player(100, 20, 1, 1);
+             
 
             Item ekhorn = new Gun();
-            player.Invenlist.AddLast(ekhorn);
+            Item basicArmour = new Armour();
 
-            //player.PlayerAction();
-            player.PlayerMenu();
+            player[0] = basicArmour;
+            player[1] = ekhorn;
             
+
+            region.Totrich(player);
+            
+            //player.PlayerMenu();
 
         }       
 

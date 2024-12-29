@@ -17,6 +17,7 @@ namespace ConsoleProject
         protected string _explain;
         protected int _price;
         protected Category _category;
+        protected int _itemCode;
 
         public string Name
         { get { return _name; } }
@@ -27,7 +28,10 @@ namespace ConsoleProject
         public int Price
         { get { return _price; } }
 
-        
+        public Category Category
+        { get { return _category; } }
+
+        public virtual void ItemEffect(Player player) { }
     }
 
     class Armour : Item
@@ -46,23 +50,43 @@ namespace ConsoleProject
             _price = price;
             _category = Category.Armour;
         }
+
+        public override void ItemEffect(Player player)
+        {
+            player.MPRefill = 3;
+        }
     }
 
     class Gun : Item
     {
         public Gun()
         {
+            _itemCode = 1;
             _name = "에크혼 알파";
-            _explain = "파비안이 제작한 총. 공격력 + 10";
+            _explain = "파비안이 나를 위해 제작한 총. 공격력 10";
             _category = Category.weapon;
         }
 
         public Gun(int price)
         {
+            _itemCode = 2;
             _name = "사냥용 총";
-            _explain = "평범한 사냥용 총. 공격력 + 15";
+            _explain = "평범한 사냥용 총. 공격력 15";
             _price = price;
             _category = Category.weapon;
+        }
+
+        public override void ItemEffect(Player player)
+        {
+            if (_itemCode == 1)
+            {
+                player.Atk = 10;
+            }
+
+            else if (_itemCode == 2)
+            {
+                player.Atk = 15;
+            }
         }
     }
 
@@ -71,11 +95,19 @@ namespace ConsoleProject
         public Potion(int price)
         {
             _name = "X-090892";
-            _explain = "케나인들이 즐겨 마시는 에너지 드링크";
+            _explain = "케나인들이 즐겨 마시는 에너지 드링크. HP + 20";
             _price = price;
-            _category = Category.weapon;
+            _category = Category.useable;
         }
 
+        public override void ItemEffect(Player player)
+        {
+            player.HP += 20;
 
+            if(player.HP > 100)
+            {
+                player.HP = 100;
+            }
+        }
     }
 }
